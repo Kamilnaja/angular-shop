@@ -10,9 +10,10 @@ angular.module("sportsStore")
         $scope.selectCategory = function (newCategory) {
             selectedCategory = newCategory;
             $scope.selectedPage = 1;
-            $scope.selectPage = function (newPage) {
-                $scope.selectedPage = newPage;
-            }
+        };
+
+        $scope.selectPage = function (newPage) {
+            $scope.selectedPage = newPage;
         };
 
         $scope.categoryFilterFn = function (product) {
