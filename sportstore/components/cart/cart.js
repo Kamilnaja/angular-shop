@@ -30,10 +30,11 @@ angular.module("cart", [])
             }
         }
     })
-    .directive ("cartSummary", function (cart){
+
+    .directive ("cartSummary", function (cart) {
         return {
             restrict: "E",
-            templateURl: "angularjs/components/cart/cartSummary.html",
+            templateUrl: "components/cart/cartSummary.html",
             controller: function ($scope){
                 var cartData = cart.getProducts();
 
@@ -52,5 +53,5 @@ angular.module("cart", [])
                     return total;
                 }
             }
-        }
+        };
     })

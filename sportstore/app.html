@@ -1,23 +1,25 @@
 <!doctype html>
 <html ng-app="sportsStore">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <script src="angular.min.js"></script>
-  <script>
-      angular.module("sportsStore", ["customFilters"]);
-  </script>
-  <script src="controllers/sportsStore.js"></script>
-  <script src="filters/customFilters.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="angular.min.js"></script>
+    <script>
+        angular.module("sportsStore", ["customFilters", "cart"]);
+    </script>
+    <script src="controllers/sportsStore.js"></script>
+    <script src="filters/customFilters.js"></script>
     <script src="controllers/productListControllers.js"></script>
-  <title>Document</title>
+    <script src="components/cart/cart.js"></script>
+    <title>Document</title>
 </head>
 <body ng-controller="sportsStoreCtrl">
 <div class="navbar navbar-inverse">
-  <a class="navbar-brand" href="#">Sklep z zegarkami</a>
+    <a class="navbar-brand" href="#">Sklep z zegarkami</a>
+    <cart-summary />
 </div>
 <div class="container">
 
