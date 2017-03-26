@@ -6,14 +6,40 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="angular.min.js"></script>
     <script>
-        angular.module("sportsStore", ["customFilters", "cart"]);
+        angular.module("sportsStore", ["customFilters", "cart", "ngRoute"])
+            .config(function ($routeProvider) {
+
+                $routeProvider
+                    .when("/complete", {
+                    templateUrl: "/views/thankYou.html"
+                    })
+
+                    .when("/placeorder", {
+                        templateUrl: "/views/placeOrder.html"
+                    })
+
+                    .when("/checkout", {
+                    templateUrl: "/views/checkoutSummary.html"
+                    })
+
+                    .when("/products", {
+                    templateUrl: "/views/productList.html"
+                    })
+
+                    .otherwise({
+                    templateUrl: "/views/productList.html"
+                });
+            });
     </script>
     <script src="controllers/sportsStore.js"></script>
     <script src="filters/customFilters.js"></script>
     <script src="controllers/productListControllers.js"></script>
     <script src="components/cart/cart.js"></script>
+    <script src="ngmodules/angular-route.js"></script>
+    <script src="controllers/checkoutControllers.js"></script>
     <title>Document</title>
 </head>
 <body ng-controller="sportsStoreCtrl">
@@ -21,13 +47,10 @@
     <a class="navbar-brand" href="#">Sklep z zegarkami</a>
     <cart-summary />
 </div>
-<div class="container">
-
-    <div class="alert alert-danger" ng-show="data-error">
-        Błąd {{data.error.status}}. Dane nie zostały wczytane.
-        <a href="/app.html">KLiknij tutaj aby spróbować ponownie</a>
-    </div>
-    <ng-include src="'views/productList.html'"></ng-include>
+<div class="alert alert-danger" ng-show="data.error">
+    Błąd {{data.error.status}}. Dane nie zostały wczytane.
+    <a href="/app.html" class="alert-link">KLiknij tutaj aby spróbować ponownie</a>
 </div>
+    <ng-view />
 </body>
 </html>
